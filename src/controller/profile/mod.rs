@@ -1,6 +1,7 @@
-use actix_web::{HttpResponse, Responder};
+use actix_web::{HttpRequest,HttpResponse, Responder};
+use log;
 
-pub async fn get_user() -> impl Responder {
-    print!("getting user");
+pub async fn get_user(r:HttpRequest) -> impl Responder {
+    log::info!("requested user {:?}",r);
     HttpResponse::Ok().body("from get user")
 }
