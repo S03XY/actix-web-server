@@ -5,6 +5,7 @@ use log;
 // these are the route handlers
 pub async fn get_user(r: HttpRequest) -> impl Responder {
     log::info!("requested user {:?}", r);
+    log::warn!("user from evn {}",dotenvy::var("USER_NAME").unwrap());
     HttpResponse::Ok().body("from get user")
 }
 

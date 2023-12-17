@@ -8,7 +8,7 @@ pub fn user_config(cfg: &mut web::ServiceConfig) {
 }
 
 pub fn user_config_from_attr(cfg: &mut web::ServiceConfig) {
-    cfg.service(web::scope("/user").service(called_from_config));
+    cfg.service(web::scope("/scope").service(called_from_config));
     // cfg.service(called_from_config)
     // cfg.service(web::resource("/resource").route(web::to(get_user_from_config))); // in resource we can get get post patch delete request
     // cfg.service(web::resource("/resource").route(web::to(get_user_from_config))); // in resource we can get get post patch delete request

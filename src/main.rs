@@ -11,6 +11,7 @@ use crate::routes::user::{user_config, user_config_from_attr};
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     env_logger::init_from_env(env_logger::Env::new().default_filter_or("info"));
+    dotenvy::dotenv().ok();
     HttpServer::new(|| {
         App::new()
             .configure(user_config)
