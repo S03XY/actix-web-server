@@ -1,0 +1,4 @@
+export enum USER_PREFERENCES {
+  USER,
+  ADVERTISER,
+}
