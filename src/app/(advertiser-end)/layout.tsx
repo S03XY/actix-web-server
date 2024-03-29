@@ -3,6 +3,7 @@ import { Josefin_Sans } from "next/font/google";
 
 import "../globals.css";
 import { ReduxProvider } from "@/modules/providers/reduxProvider";
+import { WalletProvider } from "@/modules/providers/walletProvider";
 
 const josefin_sans = Josefin_Sans({
   subsets: ["latin"],
@@ -23,9 +24,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${josefin_sans.variable} max-w-[50vw] mx-auto shadow-lg fixed h-[100vh] left-0 right-0 font-josefin-sans`}
+        className={`${josefin_sans.variable} mx-auto shadow-lg fixed h-[100vh] left-0 right-0 font-josefin-sans`}
       >
-        <ReduxProvider>{children}</ReduxProvider>
+        <ReduxProvider>
+          <WalletProvider>{children}</WalletProvider>
+        </ReduxProvider>
       </body>
     </html>
   );

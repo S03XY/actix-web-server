@@ -1,10 +1,15 @@
 import { TopNavigation } from "@/components/topNavigation";
-import Image from "next/image";
+import { LoginInterface } from "@/modules/loginInterface";
 
 export default function Home() {
   return (
     <main className="">
-      <TopNavigation />
+      <div className="h-[30vh]">
+        <TopNavigation />
+      </div>
+      <div className="h-[70vh]">
+        <LoginInterface />
+      </div>
     </main>
   );
 }
