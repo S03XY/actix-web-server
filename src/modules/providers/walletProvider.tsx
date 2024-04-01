@@ -1,7 +1,12 @@
 "use client";
 
 import "@rainbow-me/rainbowkit/styles.css";
-import { getDefaultConfig, RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import {
+  getDefaultConfig,
+  RainbowKitProvider,
+  Theme,
+  darkTheme,
+} from "@rainbow-me/rainbowkit";
 import { WagmiProvider } from "wagmi";
 import {
   arbitrumSepolia,
@@ -14,8 +19,24 @@ import React from "react";
 
 const queryClient = new QueryClient();
 
+const myCustomTheme: Theme = {
+  ...darkTheme(),
+  fonts: {
+    body: "--font-josefin-sans",
+  },
+  colors: {
+    ...darkTheme().colors,
+    accentColor:"#192537"
+
+  },
+
+  radii: {
+    ...darkTheme().radii,
+    connectButton: "5px",
+  },
+};
+
 export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
-    
   const config = getDefaultConfig({
     appName: "adlink",
     projectId: process.env.NEXT_PUBLIC_RAINBOW_PROJECT_ID!,
@@ -26,7 +47,9 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider>{children}</RainbowKitProvider>
+        <RainbowKitProvider theme={myCustomTheme}>
+          {children}
+        </RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );
