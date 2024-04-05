@@ -10,12 +10,14 @@ import { ImMagicWand } from "react-icons/im";
 import { SiweMessage, generateNonce } from "siwe";
 
 import { useAccount, useSignMessage } from "wagmi";
+import { useRouter } from "next/navigation";
 
 export const LoginInterface = () => {
   const userSettings = useAppSelector((state) => state.UserSetting);
   const [formStage, setFormStage] = useState(0);
   const [newMember, setNewMember] = useState(true);
   const [userName, setUserName] = useState("");
+  const router = useRouter();
 
   const account = useAccount();
   const { signMessageAsync } = useSignMessage();
@@ -55,6 +57,8 @@ export const LoginInterface = () => {
         walletAddress: account.address,
       }),
     });
+
+    setFormStage(0);
   };
   const login = async () => {
     const response = await fetch(
@@ -77,6 +81,8 @@ export const LoginInterface = () => {
     const signature = await signMessageAsync({
       message: message.prepareMessage(),
     });
+
+    router.push("/interface");
   };
 
   return (

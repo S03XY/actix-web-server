@@ -35,3 +35,18 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+/express-server/node_modules
+/express-server/.env
+
+# Hardhat files
+/express-server/cache
+/express-server/artifacts
+
+# TypeChain files
+/express-server/typechain
+/express-server/typechain-types
+
+# solidity-coverage files
+/express-server/coverage
+/express-server/coverage.json
