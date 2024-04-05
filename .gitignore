@@ -50,3 +50,6 @@ next-env.d.ts
 # solidity-coverage files
 /express-server/coverage
 /express-server/coverage.json
+
+
+.env
