@@ -1,0 +1,5 @@
+{
+  "AdlinkModule#AdlinkToken": "0x44634cFA002Ac9003b7f2a8014076f24999Fd4A1",
+  "AdapterModule#AdlinkAdapter": "0xa5ef3F465803F155a6942EE68d9C23968027d0f5",
+  "RelayerModule#Relayer": "0x531123ce42A4D6e26eECA37dB94c74541b05eee4"
+}

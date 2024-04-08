@@ -1,9 +1,13 @@
 require("@nomicfoundation/hardhat-toolbox");
 
+const dotenv = require("dotenv");
+
+dotenv.config({ path: "../.env" });
+
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
   solidity: {
-    version: "0.8.19",
+    version: "0.8.20",
     settings: {
       optimizer: {
         enabled: true,
@@ -34,5 +38,27 @@ module.exports = {
       accounts: [process.env.DEPLOYER],
     },
   },
-  etherscan: {},
+  etherscan: {
+    apiKey: {
+      arbitrum: process.env.ARBITRUM_API,
+      avail: process.env.AVAIL_API,
+      gnosis: process.env.GNOSIS_API,
+    },
+    customChains: [
+      {
+        network: "arbitrum",
+        chainId: 421614,
+        urls: {
+          apiURL: "https://api-sepolia.arbiscan.io/api",
+        },
+      },
+      {
+        network: "gnosis",
+        chainId: 10200,
+        urls: {
+          apiURL: "https://gnosis.blockscout.com/api/v2/",
+        },
+      },
+    ],
+  },
 };

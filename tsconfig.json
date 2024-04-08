@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "server.ts", "express-server/relayers/neon.relayer.js", "express-server/relayers/morph.relayer.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "server.ts", "express-server/relayers/neon.relayer.js", "express-server/relayers/morph.relayer.js", "express-server/scripts/deploy.js"],
   "exclude": ["node_modules"]
 }
