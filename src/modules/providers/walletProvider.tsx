@@ -13,6 +13,7 @@ import {
   gnosisChiado,
   morphSepolia,
   neonDevnet,
+  mainnet,
 } from "wagmi/chains";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import React from "react";
@@ -26,8 +27,7 @@ const myCustomTheme: Theme = {
   },
   colors: {
     ...darkTheme().colors,
-    accentColor:"#192537"
-
+    accentColor: "#192537",
   },
 
   radii: {
@@ -40,7 +40,7 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
   const config = getDefaultConfig({
     appName: "adlink",
     projectId: process.env.NEXT_PUBLIC_RAINBOW_PROJECT_ID!,
-    chains: [arbitrumSepolia, gnosisChiado, morphSepolia, neonDevnet],
+    chains: [arbitrumSepolia, gnosisChiado, morphSepolia, neonDevnet, mainnet],
     ssr: true, // If your dApp uses server side rendering (SSR)
   });
 

@@ -4,6 +4,7 @@ import { Josefin_Sans } from "next/font/google";
 import "./globals.css";
 import { ReduxProvider } from "@/modules/providers/reduxProvider";
 import { WalletProvider } from "@/modules/providers/walletProvider";
+import { ToastModule } from "@/modules/toastModule";
 
 const josefin_sans = Josefin_Sans({
   subsets: ["latin"],
@@ -28,6 +29,7 @@ export default function RootLayout({
       >
         <ReduxProvider>
           <WalletProvider>{children}</WalletProvider>
+          <ToastModule />
         </ReduxProvider>
       </body>
     </html>
