@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { getConnection } from "../../../../utils/db.utils";
 
 export const POST = async (req: NextRequest) => {
-  const { tx, walletAddress, fromChainId, from_chain } = await req.json();
+  const { tx, walletAddress, fromChainId, from_chain, destination_chain } =
+    await req.json();
   const connection = await getConnection();
 
   const ads = await connection
@@ -20,6 +21,7 @@ export const POST = async (req: NextRequest) => {
     from_chain: from_chain,
     viewed: false,
     points: 0,
+    destination_chain: destination_chain,
   });
 
   return NextResponse.json({

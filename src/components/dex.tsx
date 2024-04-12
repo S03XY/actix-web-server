@@ -10,12 +10,17 @@ import { TbExchange } from "react-icons/tb";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { FaFileSignature } from "react-icons/fa6";
 import { PiBridgeBold } from "react-icons/pi";
-import { Chain } from "viem";
-import { useAccount, useChains, useSignMessage, useWriteContract } from "wagmi";
+import { Chain, createPublicClient, http } from "viem";
+import {
+  useAccount,
+  useChains,
+  useSignMessage,
+  useWaitForTransactionReceipt,
+  useWriteContract,
+} from "wagmi";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { BsFillLightningChargeFill } from "react-icons/bs";
-
 import { AiOutlineLink } from "react-icons/ai";
 
 import {
@@ -24,7 +29,7 @@ import {
   EvmChains,
   OffChainSignType,
 } from "@ethsign/sp-sdk";
-import { writeContract } from "viem/actions";
+
 import { ADAPTER_ABI } from "@/utils/adapter.abi";
 import { CONTRACTS } from "@/utils/constant";
 import { ADLINK_ABI } from "@/utils/adlink.abi";
@@ -120,12 +125,18 @@ export const DEX = () => {
         .adapter as string;
       const adlinkContract = CONTRACTS[`${account?.chainId}`].adlink as string;
 
-      await writeContractAsync({
+      const approveTx = await writeContractAsync({
         abi: ADLINK_ABI,
         address: `0x${adlinkContract.slice(2)}`,
         functionName: "approve",
         args: [adapterContract, inputAmount],
       });
+      const pc = createPublicClient({
+        chain: account.chain,
+        transport: http(),
+      });
+
+      await pc.waitForTransactionReceipt({ hash: approveTx });
 
       const signature = await writeContractAsync({
         abi: ADAPTER_ABI,
@@ -143,6 +154,7 @@ export const DEX = () => {
           walletAddress: account.address,
           fromChainId: account.chainId,
           from_chain: account.chain?.name,
+          destination_chain: destinationChain?.name,
         }),
       });
     } else {
@@ -295,7 +307,10 @@ export const DEX = () => {
                   >
                     <p>{i + 1}</p>
                     <p className="text-center">{d.from_chain}</p>
-                    <p className="text-center">0xaa93...575ce0</p>
+                    <p className="text-center">{`${d.tx.slice(
+                      0,
+                      4
+                    )}...${d.tx.slice(d.tx.length - 4, d.tx.length)}`}</p>
                     <p
                       className={`underline underline-offset-2 text-center cursor-pointer ${
                         d.viewed !== false ? "text-red-400" : "text-green-400"
