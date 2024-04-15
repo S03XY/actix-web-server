@@ -12,4 +12,8 @@ export const CONTRACTS: any = {
     adlink: "0xe6bb8b73B59ddcfC57Fd4eBd38fF6669F43869D4",
     adapter: "0x168c9a83596bCb286D6AC5F7Fb50ae4bA59963F8",
   },
+  "245022926": {
+    adlink: "0xBAED97A58a50DbB61cCfF4d302Dc19d9ef6A032E",
+    adapter: "0x9C988bF2E39e1b01b91f7641A1489E391CFeFb23",
+  },
 };

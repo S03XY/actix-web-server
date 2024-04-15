@@ -127,3 +127,13 @@ export const InterfaceModule = () => {
     </div>
   );
 };
+
+
+
+// Hey Rory,
+
+// I hope this email finds you well. I won two prizes in the Framework Hackathon from XMTP and Dynamic, but I haven't received anything in my wallet. Could you please check what is wrong?
+
+// My EthGlobal ID is prishankofficial@gmail.com.
+
+// Thank you.
