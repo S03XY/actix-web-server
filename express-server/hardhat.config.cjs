@@ -59,6 +59,14 @@ module.exports = {
           apiURL: "https://gnosis.blockscout.com/api/v2/",
         },
       },
+      {
+        network: "opdemo",
+        chainId: 20240219,
+        urls: {
+          apiURL: "https://op-demo-explorer.alt.technology/api",
+          browserURL: "https://op-demo-explorer.alt.technology",
+        },
+      },
     ],
   },
 };

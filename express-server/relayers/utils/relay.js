@@ -17,13 +17,13 @@ const Relay = async (chainId, target, data) => {
 
   let chain = getChainFromChainId(chainId);
 
-  const wClient =  createWalletClient({
+  const wClient = createWalletClient({
     transport: http(),
     chain,
     account: privateKeyToAccount(`0x${process.env.DEPLOYER}`),
   });
 
-  const pClient =  createPublicClient({
+  const pClient = createPublicClient({
     transport: http(),
     chain,
   });
@@ -51,5 +51,7 @@ const getChainFromChainId = (chainId) => {
       return gnosisChiado;
     case "421614":
       return arbitrumSepolia;
+    case "245022926":
+      return neonDevnet;
   }
 };
