@@ -22,7 +22,7 @@ dotenv.config({ path: "../.env" });
 const GnosisRelayer = async () => {
   const pubClient = createPublicClient({
     transport: http(),
-    chain: neonDevnet,
+    chain: gnosisChiado,
   });
 
   // test

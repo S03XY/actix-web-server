@@ -7,7 +7,7 @@ const {
   createWalletClient,
   parseGwei,
 } = require("viem");
-const { arbitrumSepolia, gnosisChiado } = require("viem/chains");
+const { arbitrumSepolia, gnosisChiado, neonDevnet } = require("viem/chains");
 const { Relay } = require("../relayers/utils/relay");
 
 const dotenv = require("dotenv");

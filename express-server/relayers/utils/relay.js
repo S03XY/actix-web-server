@@ -6,8 +6,10 @@ const {
   createPublicClient,
   parseGwei,
 } = require("viem");
-const { gnosisChiado, arbitrumSepolia } = require("viem/chains");
+const { gnosisChiado, arbitrumSepolia, neonDevnet } = require("viem/chains");
 const { privateKeyToAccount } = require("viem/accounts");
+
+const { demoAvail } = require("../custom chain/demo-avail");
 
 dotenv.config("../.env");
 
@@ -53,5 +55,9 @@ const getChainFromChainId = (chainId) => {
       return arbitrumSepolia;
     case "245022926":
       return neonDevnet;
+    case "202402021700":
+      return demoAvail;
+    case "2710":
+      return morphSepolia;
   }
 };
